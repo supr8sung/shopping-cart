@@ -7,44 +7,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
+@Data
+@Builder(builderClassName = "builder",setterPrefix = "with")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotEmpty
     private Double price;
     @NotEmpty
     private String name;
     @Enumerated(value = EnumType.STRING)
     private ItemType type;
 
-    public Item() {
 
-    }
-
-    public Item(Double price, String name, ItemType type) {
-
-        this.price = price;
-        this.name = name;
-        this.type = type;
-    }
-
-    public Double getPrice() {
-
-        return price;
-    }
-
-    public String getName() {
-
-        return name;
-    }
-
-    public ItemType getType() {
-
-        return type;
-    }
 }
