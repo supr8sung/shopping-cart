@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  redis-bff:
+    image: ${REDIS_IMAGE}
+    restart: always
+    ports:
+      - ${REDIS_EXT_PORT}:6379
+    expose:
+      - '6379'
+  db:
+    image: ${MY_SQL_IMAGE}
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'shopping-cart'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - ${MYSQL_EXT_PORT}:3306

@@ -29,5 +29,4 @@ public class Item {
     @Enumerated(value = EnumType.STRING)
     private ItemType type;
 
-
 }
