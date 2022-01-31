@@ -42,7 +42,7 @@ class CartControllerTest {
 
         this.mockMvc.perform(post("/cart").content(json).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").value("1"))
+                .andExpect(jsonPath("$.id").isNotEmpty())
                 .andDo(print());
 
     }
