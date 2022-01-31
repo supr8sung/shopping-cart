@@ -1,9 +1,9 @@
 package com.bench.shoppingcart.domain;
 
 public enum ItemType {
-    SHOES("Shoes"),DRESSES("Dress"),SPORTS("Sports");
+    SHOES("Shoes"), DRESSES("Dress"), SPORTS("Sports");
 
-   private String value;
+    private String value;
 
     public String getValue() {
 

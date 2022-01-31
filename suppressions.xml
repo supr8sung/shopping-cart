@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+        "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+    <!-- can't split long messages between lines -->
+    <suppress checks="HideUtilityClassConstructor" files="ShoppingCartApplication.java" />
+    <suppress checks="FileTabCharacter" files="ShoppingCartApplication.java" />
+<!--    <suppress checks="NewlineAtEndOfFile" files="WriterpadApplication.java"/>-->
+<!--    <suppress checks="NewlineAtEndOfFile" files="application.properties"/>-->
+<!--    <suppress checks="ReduntantModifier" files="ArticleResponse.java"/>-->
+    <!-- don't validate generated files -->
+
+
+</suppressions>

@@ -3,7 +3,6 @@ package com.bench.shoppingcart.service;
 import com.bench.shoppingcart.domain.Item;
 import com.bench.shoppingcart.repository.CartRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
