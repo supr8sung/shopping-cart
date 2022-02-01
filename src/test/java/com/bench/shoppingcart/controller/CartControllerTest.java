@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@Profile("test"
+@Profile("test")
 class CartControllerTest {
 
     @Autowired
