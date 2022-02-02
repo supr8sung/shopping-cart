@@ -13,7 +13,7 @@ import javax.validation.constraints.NotEmpty;
 @Builder(builderClassName = "builder", setterPrefix = "with")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Item {
+public class Wishlist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,5 +23,7 @@ public class Item {
     private String name;
     @Enumerated(value = EnumType.STRING)
     private ItemType type;
-
+    private int quantity;
+    private Long itemId;
 }
+
