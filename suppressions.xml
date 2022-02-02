@@ -8,7 +8,9 @@
     <!-- can't split long messages between lines -->
     <suppress checks="HideUtilityClassConstructor" files="ShoppingCartApplication.java" />
     <suppress checks="FileTabCharacter" files="ShoppingCartApplication.java" />
-<!--    <suppress checks="NewlineAtEndOfFile" files="WriterpadApplication.java"/>-->
+    <suppress checks="NewlineAtEndOfFile" files="CartController.java"/>
+    <suppress checks="NewlineAtEndOfFile" files="CartService.java"/>
+    <suppress checks="AvoidStarImport" files="CartController.java"/>
 <!--    <suppress checks="NewlineAtEndOfFile" files="application.properties"/>-->
 <!--    <suppress checks="ReduntantModifier" files="ArticleResponse.java"/>-->
     <!-- don't validate generated files -->

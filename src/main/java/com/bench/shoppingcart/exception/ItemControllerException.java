@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ItemControllerException {
 
     @ExceptionHandler(value = ItemNotFoundException.class)
-    public ResponseEntity<Object> exception(ItemNotFoundException exception){
+    public ResponseEntity<Object> exception(ItemNotFoundException exception) {
         return new ResponseEntity<>("Item not found", HttpStatus.NOT_FOUND);
     }
 }

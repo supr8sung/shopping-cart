@@ -1,5 +1,10 @@
 package com.bench.shoppingcart.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,8 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.databind.deser.SettableBeanProperty;
-import lombok.*;
+
 
 @Entity
 @Data

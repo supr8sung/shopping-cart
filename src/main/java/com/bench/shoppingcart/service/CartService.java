@@ -22,15 +22,16 @@ public class CartService {
         return savedItem;
     }
 
-    public List<Item> getAll(){
+    public List<Item> getAll() {
         return cartRepository.findAll();
     }
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         Optional<Item> item = cartRepository.findById(id);
-        if(item.isPresent()){
+        if (item.isPresent()) {
             cartRepository.deleteById(id);
+        } else {
+            throw new ItemNotFoundException();
         }
-        throw new ItemNotFoundException();
     }
 }
