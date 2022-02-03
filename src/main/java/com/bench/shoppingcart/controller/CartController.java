@@ -1,8 +1,11 @@
 package com.bench.shoppingcart.controller;
 
 import com.bench.shoppingcart.domain.Item;
+import com.bench.shoppingcart.domain.Wishlist;
 import com.bench.shoppingcart.service.CartService;
+import com.bench.shoppingcart.service.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 
@@ -25,6 +28,9 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private WishlistService wishlistService;
+
     @PostMapping
     public ResponseEntity<Item> add(@RequestBody Item item) {
         Item savedItem = cartService.add(item);
@@ -40,5 +46,12 @@ public class CartController {
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id) {
         cartService.deleteById(id);
+    }
+
+    @PostMapping("/wishlist/{itemId}")
+    public ResponseEntity<Wishlist> addToWishlist(@PathVariable long itemId)
+    {
+        wishlistService.addWishlistItem(itemId);
+        return new ResponseEntity<>(CREATED);
     }
 }
