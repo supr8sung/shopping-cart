@@ -7,9 +7,6 @@ import com.bench.shoppingcart.service.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-
-import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
@@ -49,9 +48,13 @@ public class CartController {
     }
 
     @PostMapping("/wishlist/{itemId}")
-    public ResponseEntity<Wishlist> addToWishlist(@PathVariable long itemId)
-    {
+    public ResponseEntity<Wishlist> addToWishlist(@PathVariable long itemId) {
         wishlistService.addWishlistItem(itemId);
         return new ResponseEntity<>(CREATED);
+    }
+
+    @GetMapping("/wishlist")
+    public ResponseEntity<Object> getWishlistItem() {
+        return new ResponseEntity<Object>(wishlistService.getWishlist(), HttpStatus.FOUND);
     }
 }
