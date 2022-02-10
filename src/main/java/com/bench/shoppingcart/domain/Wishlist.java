@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
+@ToString
 @Entity
 @Data
 @Builder(builderClassName = "builder", setterPrefix = "with")
@@ -28,4 +30,5 @@ public class Wishlist {
     private String name;
     @Enumerated(value = EnumType.STRING)
     private ItemType type;
+
 }

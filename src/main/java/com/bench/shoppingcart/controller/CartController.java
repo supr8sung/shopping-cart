@@ -1,6 +1,8 @@
 package com.bench.shoppingcart.controller;
 
 import com.bench.shoppingcart.domain.Item;
+import com.bench.shoppingcart.domain.NameCompare;
+import com.bench.shoppingcart.domain.PriceCompare;
 import com.bench.shoppingcart.domain.Wishlist;
 import com.bench.shoppingcart.service.CartService;
 import com.bench.shoppingcart.service.WishlistService;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.CREATED;
@@ -56,5 +59,48 @@ public class CartController {
     @GetMapping("/wishlist")
     public ResponseEntity<Object> getWishlistItem() {
         return new ResponseEntity<Object>(wishlistService.getWishlist(), HttpStatus.FOUND);
+    }
+
+    @GetMapping("/sort/{sortby}")
+    public ResponseEntity getItems(@PathVariable(name = "sortby") String sort) {
+        List<Item> items = cartService.getAll();
+
+        System.out.println("Sort by: " + sort);
+
+        if (sort.equalsIgnoreCase("name")) {
+            NameCompare nameCompare = new NameCompare();
+            Collections.sort(items, nameCompare);
+            for (Item item : items) {
+                System.out.println(item.getPrice() + "  " + item.getName());
+                item.toString();
+            }
+        } else if (sort.equalsIgnoreCase("price")) {
+            PriceCompare priceCompare = new PriceCompare();
+            //Collections.sort(items, priceCompare);
+
+            Collections.sort(items, Collections.reverseOrder());
+            for (Item item : items) {
+                System.out.println(item.getPrice() + "  " + item.getName());
+                item.toString();
+            }
+        } else if (sort.equalsIgnoreCase("id")) {
+            Collections.sort(items);
+            for (Item item : items) {
+                System.out.println("Id : " + item.getId()
+                        + " " + item.getPrice() + "  " + item.getName());
+                item.toString();
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(OK);
+    }
+
+    @PostMapping("/addFile")
+    public void mapReapExcelDatatoDB()
+    //(@RequestParam("file") @NotNull MultipartFile reapExcelDataFile)
+            throws Exception {
+        cartService.excelReader();
     }
 }
